@@ -5,7 +5,9 @@ package com.cost.share.service.impl;
 
 import java.util.List;
 
+import com.cost.share.dao.GroupDao;
 import com.cost.share.dao.UserDao;
+import com.cost.share.dao.impl.GroupDaoImpl;
 import com.cost.share.dao.impl.UserDaoImpl;
 import com.cost.share.model.Group;
 import com.cost.share.model.User;
@@ -31,8 +33,8 @@ public class UserGroupServiceImpl implements UserGroupService {
 
 	@Override
 	public void addGroup(Group group) {
-		// TODO Auto-generated method stub
-
+		GroupDao dao = new GroupDaoImpl();
+		dao.addGroup(group);
 	}
 
 	@Override
@@ -43,8 +45,8 @@ public class UserGroupServiceImpl implements UserGroupService {
 
 	@Override
 	public Group getGroup(String groupId) {
-		// TODO Auto-generated method stub
-		return null;
+		GroupDao dao = new GroupDaoImpl();
+		return dao.getGroup(groupId);
 	}
 
 	@Override

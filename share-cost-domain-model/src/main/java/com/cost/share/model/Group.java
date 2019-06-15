@@ -10,9 +10,20 @@ import java.util.List;
  */
 public class Group {
 	
-	private long groupId;
+	private String groupId;
 	private String groupName;
 	private List<User> users;
+	
+	/**
+	 * @param groupName
+	 * @param users
+	 */
+	public Group(String groupId, String groupName, List<User> users) {
+		super();
+		this.groupId = groupId;
+		this.groupName = groupName;
+		this.users = users;
+	}
 	
 	/**
 	 * @param groupName
@@ -26,13 +37,13 @@ public class Group {
 	/**
 	 * @return the groupId
 	 */
-	public long getGroupId() {
+	public String getGroupId() {
 		return groupId;
 	}
 	/**
 	 * @param groupId the groupId to set
 	 */
-	public void setGroupId(long groupId) {
+	public void setGroupId(String groupId) {
 		this.groupId = groupId;
 	}
 	/**
