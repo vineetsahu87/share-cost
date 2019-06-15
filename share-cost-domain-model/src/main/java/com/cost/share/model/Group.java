@@ -1,5 +1,7 @@
 package com.cost.share.model;
 
+import java.util.List;
+
 /**
  * Stores the Group information
  * 
@@ -9,7 +11,18 @@ package com.cost.share.model;
 public class Group {
 	
 	private long groupId;
-	private String GroupName;
+	private String groupName;
+	private List<User> users;
+	
+	/**
+	 * @param groupName
+	 * @param users
+	 */
+	public Group(String groupName, List<User> users) {
+		super();
+		this.groupName = groupName;
+		this.users = users;
+	}
 	/**
 	 * @return the groupId
 	 */
@@ -26,12 +39,24 @@ public class Group {
 	 * @return the groupName
 	 */
 	public String getGroupName() {
-		return GroupName;
+		return this.groupName;
 	}
 	/**
 	 * @param groupName the groupName to set
 	 */
 	public void setGroupName(String groupName) {
-		GroupName = groupName;
+		this.groupName = groupName;
+	}
+	/**
+	 * @return the users
+	 */
+	public List<User> getUsers() {
+		return users;
+	}
+	/**
+	 * @param users the users to set
+	 */
+	public void setUsers(List<User> users) {
+		this.users = users;
 	}
 }
