@@ -23,7 +23,7 @@ public class Users {
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response addUser(@FormParam("firstName") String firstName, @FormParam("lastName") String lastName,
-			@FormParam("EmailAddress") String emailAddress) {
+			@FormParam("emailAddress") String emailAddress) {
 		UserGroupService service = UserGroupFactory.getUserGroupImpl();
 		User user = new User(firstName, lastName, emailAddress);
 		service.addUser(user);

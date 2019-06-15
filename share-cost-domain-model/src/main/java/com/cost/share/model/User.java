@@ -23,6 +23,20 @@ public class User
 		this.lastName = lastName;
 		this.emailAddress = emailAddress;
 	}
+	
+	
+	/**
+	 * @param firstName
+	 * @param lastName
+	 * @param emailAddress
+	 */
+	public User(String userId, String firstName, String lastName, String emailAddress) {
+		super();
+		this.userId = userId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.emailAddress = emailAddress;
+	}
 	/**
 	 * @return the userId
 	 */

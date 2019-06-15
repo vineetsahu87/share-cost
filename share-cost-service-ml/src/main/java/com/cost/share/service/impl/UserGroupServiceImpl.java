@@ -5,6 +5,8 @@ package com.cost.share.service.impl;
 
 import java.util.List;
 
+import com.cost.share.dao.UserDao;
+import com.cost.share.dao.impl.UserDaoImpl;
 import com.cost.share.model.Group;
 import com.cost.share.model.User;
 import com.cost.share.service.UserGroupService;
@@ -17,14 +19,14 @@ public class UserGroupServiceImpl implements UserGroupService {
 
 	@Override
 	public void addUser(User user) {
-		// TODO Auto-generated method stub
-
+		UserDao dao = new UserDaoImpl();
+		dao.addUser(user);
 	}
 
 	@Override
 	public User getUser(String emailAddress) {
-		User user = new User("Vineet", "Sahu", "Vineetsahu87@gmail.com");
-		return user;
+		UserDao dao = new UserDaoImpl();
+		return dao.getUser(emailAddress);
 	}
 
 	@Override
