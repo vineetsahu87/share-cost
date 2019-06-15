@@ -37,11 +37,11 @@ public interface UserGroupService {
 	 * @param groupId
 	 * @param user
 	 */
-	public void addUserToGroup(String groupId, User user);
+	public void addUserToGroup(String groupId, List<User> users);
 	
 	/**
-	 * Retrieves the user based on the userId
-	 * @param userId
+	 * Retrieves the user based on the groupId
+	 * @param groupId
 	 */
 	public Group getGroup(String groupId);
 	
@@ -51,11 +51,4 @@ public interface UserGroupService {
 	 * @return
 	 */
 	public List<Group> getUserGroups(String userId);
-	
-	/**
-	 * Retrieves the list of users in the group
-	 * @param groupId
-	 * @return
-	 */
-	public List<User> getGroupUsers(String groupId);
 }

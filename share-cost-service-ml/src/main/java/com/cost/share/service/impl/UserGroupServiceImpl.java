@@ -34,7 +34,7 @@ public class UserGroupServiceImpl implements UserGroupService {
 	}
 
 	@Override
-	public void addUserToGroup(String groupId, User user) {
+	public void addUserToGroup(String groupId, List<User> users) {
 		// TODO Auto-generated method stub
 
 	}
@@ -47,12 +47,6 @@ public class UserGroupServiceImpl implements UserGroupService {
 
 	@Override
 	public List<Group> getUserGroups(String userId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<User> getGroupUsers(String groupId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
