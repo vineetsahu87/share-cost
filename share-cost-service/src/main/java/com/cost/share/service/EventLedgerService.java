@@ -13,48 +13,53 @@ import com.cost.share.model.User;
  *
  */
 public interface EventLedgerService {
-	
+
 	/**
 	 * Creates a new Event
+	 * 
 	 * @param event
 	 */
 	public void addEvent(Event event);
-	
+
 	/**
 	 * Retrieves the event using the eventId passed.
+	 * 
 	 * @param eventId
 	 * @return Event
 	 */
 	public Event getEvent(String eventId);
-	
+
 	/**
 	 * Retrieves the list of events for a given UserId
+	 * 
 	 * @param UserId
 	 * @return
 	 */
 	public List<Event> getEvents(String userId);
-	
+
 	/**
+	 * Adds the expense for the event
 	 * 
 	 * @param expense
 	 */
-	public void addExpense(Expense expense);
-	
+	public void addExpense(String eventId, Expense expense);
+
 	/**
 	 * 
 	 * @param ledger
 	 */
-	public void addLedger(Ledger ledger);
-	
+	public void addLedger(String expenseId, Ledger ledger);
+
 	public List<Expense> getEventExpense(String eventId);
-	
+
 	public List<Expense> getEventExpenseForUser(String eventId, String userId);
-	
-	public HashMap<User, Double> getUserLoan(String userId);
-	
-	public HashMap<User, Double> getUserLoanForEvent(String userId);
-	
+
+	public HashMap<User, Double> getUserLoan(String eventId, String userId);
+
+	public HashMap<User, Double> getUserLoanForEvent(String eventId, String userId);
+
+	public double getEventCostForUser(String eventId, String userId);
+
 	public double getLoanAmount(String loanFrom, String loanTo);
-	
-	
+
 }

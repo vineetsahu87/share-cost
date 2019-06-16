@@ -13,17 +13,19 @@ import com.cost.share.model.User;
  */
 public interface ExpenseLedgerDao {
 
-	public void addExpense(Expense expense);
+	public void addExpense(String evenId, Expense expense);
 	
-	public void addLedger(Ledger ledger);
+	public void addLedger(String expenseId, Ledger ledger);
 	
 	public List<Expense> getEventExpense(String eventId);
 	
 	public List<Expense> getEventExpenseForUser(String eventId, String userId);
 	
-	public HashMap<User, Double> getUserLoan(String userId);
+	public HashMap<User, Double> getUserLoan(String eventId, String userId);
 	
-	public HashMap<User, Double> getUserLoanForEvent(String userId);
+	public HashMap<User, Double> getUserLoanForEvent(String eventId, String userId);
 	
 	public double getLoanAmount(String loanFrom, String loanTo);
+	
+	public double getEventCostForUser(String eventId, String userId);
 }

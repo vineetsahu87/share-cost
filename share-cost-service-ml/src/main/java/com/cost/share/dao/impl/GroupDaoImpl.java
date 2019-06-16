@@ -10,6 +10,7 @@ import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 
 import com.cost.share.dao.GroupDao;
+import com.cost.share.dao.UserDao;
 import com.cost.share.model.Group;
 import com.cost.share.model.User;
 import com.cost.share.util.DBConnection;
@@ -36,7 +37,18 @@ public class GroupDaoImpl extends DBConnection implements GroupDao {
 
 			List<BasicDBObject> obj = new ArrayList<BasicDBObject>();
 			if (group.getUsers() != null) {
-				for (User user : group.getUsers()) {
+				UserDao userDao = new UserDaoImpl();
+				for (User grpUser : group.getUsers()) {
+					// Retrieve user detail
+					User user = null;
+					if (grpUser.getUserId() != null) {
+						user = userDao
+								.getUserById(grpUser.getUserId());
+					} else if (grpUser.getEmailAddress() != null) {
+						user = userDao
+								.getUser(grpUser.getEmailAddress());
+					}
+					
 					BasicDBObject dbo = new BasicDBObject();
 					dbo.append("userId", user.getUserId());
 					dbo.append("firstName", user.getFirstName());

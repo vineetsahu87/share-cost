@@ -57,7 +57,7 @@ public class EventDaoImpl extends DBConnection implements EventDao {
 			}
 
 			Document eventDocument = new Document("eventName", event.getEventName())
-					.append("eventDesc", event.getEventDesc()).append("groups", groupObj);
+					.append("eventDesc", event.getEventDesc()).append("group", groupObj);
 
 			collection.insertOne(eventDocument);
 		} catch (IllegalArgumentException iae) {

@@ -1,6 +1,5 @@
 package com.cost.share.service.impl;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -15,7 +14,7 @@ import com.cost.share.model.User;
 import com.cost.share.service.EventLedgerService;
 
 /**
- * @author Vineet
+ * @author Vineet Sahu
  *
  */
 public class EventLedgerServiceImpl implements EventLedgerService{
@@ -39,15 +38,15 @@ public class EventLedgerServiceImpl implements EventLedgerService{
 	}
 
 	@Override
-	public void addExpense(Expense expense) {
+	public void addExpense(String eventId, Expense expense) {
 		ExpenseLedgerDao dao = new ExpenseLedgerDaoImpl();
-		dao.addExpense(expense);
+		dao.addExpense(eventId, expense);
 	}
 
 	@Override
-	public void addLedger(Ledger ledger) {
+	public void addLedger(String expenseId, Ledger ledger) {
 		ExpenseLedgerDao dao = new ExpenseLedgerDaoImpl();
-		dao.addLedger(ledger);
+		dao.addLedger(expenseId, ledger);
 	}
 
 	@Override
@@ -63,21 +62,27 @@ public class EventLedgerServiceImpl implements EventLedgerService{
 	}
 
 	@Override
-	public HashMap<User, Double> getUserLoan(String userId) {
-		// TODO Auto-generated method stub
-		return null;
+	public HashMap<User, Double> getUserLoan(String eventId, String userId) {
+		ExpenseLedgerDao dao = new ExpenseLedgerDaoImpl();
+		return dao.getUserLoan(eventId, userId);
 	}
 
 	@Override
-	public HashMap<User, Double> getUserLoanForEvent(String userId) {
-		// TODO Auto-generated method stub
-		return null;
+	public HashMap<User, Double> getUserLoanForEvent(String eventId, String userId) {
+		ExpenseLedgerDao dao = new ExpenseLedgerDaoImpl();
+		return dao.getUserLoanForEvent(eventId, userId);
 	}
 
 	@Override
 	public double getLoanAmount(String loanFrom, String loanTo) {
-		// TODO Auto-generated method stub
-		return 0;
+		ExpenseLedgerDao dao = new ExpenseLedgerDaoImpl();
+		return dao.getLoanAmount(loanFrom, loanTo);
+	}
+
+	@Override
+	public double getEventCostForUser(String eventId, String userId) {
+		ExpenseLedgerDao dao = new ExpenseLedgerDaoImpl();
+		return dao.getEventCostForUser(eventId, userId);
 	}
 
 }

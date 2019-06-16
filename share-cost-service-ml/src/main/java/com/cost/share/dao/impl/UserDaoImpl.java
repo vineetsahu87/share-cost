@@ -47,7 +47,7 @@ public class UserDaoImpl extends DBConnection implements UserDao {
 			MongoCollection<Document> collection = getCollection("sharecost", "user");
 			collection.createIndex(Indexes.text("emailAddress"));
 
-			FindIterable<Document> documents = collection.find(Filters.text(emailAddress));
+			FindIterable<Document> documents = collection.find(Filters.eq("emailAddress", emailAddress));
 
 			Document document = documents.first();
 			if (document != null) {

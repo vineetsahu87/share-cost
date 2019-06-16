@@ -1,18 +1,59 @@
 package com.cost.share.model;
 
 /**
+ * Store the Ledger details for the expense
+ * 
  * @author Vineet Sahu
  *
  */
 public class Ledger {
 
 	private long ledgerId;
-	private Event event;
-	private Expense expense;
 	private User loanFrom;
 	private User loanTo;
-	private short debitCreditFlag;
+	private boolean debitFlag;
 	private double amount;
+	
+	/**
+	 * Default Constructor 
+	 */
+	public Ledger() {
+		super();
+	}
+	
+	/**
+	 * @param ledgerId
+	 * @param expense
+	 * @param loanFrom
+	 * @param loanTo
+	 * @param debitFlag
+	 * @param amount
+	 */
+	public Ledger(User loanFrom, User loanTo, boolean debitFlag, double amount) {
+		super();
+		this.loanFrom = loanFrom;
+		this.loanTo = loanTo;
+		this.debitFlag = debitFlag;
+		this.amount = amount;
+	}
+	
+	/**
+	 * @param ledgerId
+	 * @param expense
+	 * @param loanFrom
+	 * @param loanTo
+	 * @param debitFlag
+	 * @param amount
+	 */
+	public Ledger(long ledgerId, User loanFrom, User loanTo, boolean debitFlag, double amount) {
+		super();
+		this.ledgerId = ledgerId;
+		this.loanFrom = loanFrom;
+		this.loanTo = loanTo;
+		this.debitFlag = debitFlag;
+		this.amount = amount;
+	}
+
 	/**
 	 * @return the ledgerId
 	 */
@@ -24,30 +65,6 @@ public class Ledger {
 	 */
 	public void setLedgerId(long ledgerId) {
 		this.ledgerId = ledgerId;
-	}
-	/**
-	 * @return the event
-	 */
-	public Event getEvent() {
-		return event;
-	}
-	/**
-	 * @param event the event to set
-	 */
-	public void setEvent(Event event) {
-		this.event = event;
-	}
-	/**
-	 * @return the expense
-	 */
-	public Expense getExpense() {
-		return expense;
-	}
-	/**
-	 * @param expense the expense to set
-	 */
-	public void setExpense(Expense expense) {
-		this.expense = expense;
 	}
 	/**
 	 * @return the loanFrom
@@ -76,14 +93,14 @@ public class Ledger {
 	/**
 	 * @return the debitCreditFlag
 	 */
-	public short getDebitCreditFlag() {
-		return debitCreditFlag;
+	public boolean getDebitFlag() {
+		return debitFlag;
 	}
 	/**
-	 * @param debitCreditFlag the debitCreditFlag to set
+	 * @param debitFlag the debitCreditFlag to set
 	 */
-	public void setDebitCreditFlag(short debitCreditFlag) {
-		this.debitCreditFlag = debitCreditFlag;
+	public void setDebitFlag(boolean debitFlag) {
+		this.debitFlag = debitFlag;
 	}
 	/**
 	 * @return the amount
