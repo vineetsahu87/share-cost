@@ -24,4 +24,12 @@ public interface UserDao {
 	 * @return User
 	 */
 	public User getUser(String emailAddress);
+
+	/**
+	 * Retrieves the user from the User Collection given the userId.
+	 * 
+	 * @param emailAddress
+	 * @return User
+	 */
+	public User getUserById(String userId);
 }

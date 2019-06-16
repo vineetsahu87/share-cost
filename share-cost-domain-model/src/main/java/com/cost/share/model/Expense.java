@@ -1,40 +1,82 @@
 package com.cost.share.model;
 
 /**
- * @author Vineet
+ * @author Vineet Sahu
  *
  */
 public class Expense {
 
-	private long expenseId;
-	private String expenseName;
+	private String expenseId;
+	private String expenseTitle;
 	private String expenseDesc;
 	private User paidBy;
 	private double amount;
 	private Event event;
+	
+	/**
+	 * Default Constructor for JSON conversion to Expenses.
+	 */
+	public Expense() {
+		super();
+	}
+	
+	/**
+	 * @param expenseTitle
+	 * @param expenseDesc
+	 * @param paidBy
+	 * @param amount
+	 * @param event
+	 */
+	public Expense(String expenseTitle, String expenseDesc, User paidBy, double amount, Event event) {
+		super();
+		this.expenseTitle = expenseTitle;
+		this.expenseDesc = expenseDesc;
+		this.paidBy = paidBy;
+		this.amount = amount;
+		this.event = event;
+	}
+	
+	/**
+	 * @param expenseId
+	 * @param expenseName
+	 * @param expenseDesc
+	 * @param paidBy
+	 * @param amount
+	 * @param event
+	 */
+	public Expense(String expenseId, String expenseName, String expenseDesc, User paidBy, double amount, Event event) {
+		super();
+		this.expenseId = expenseId;
+		this.expenseTitle = expenseName;
+		this.expenseDesc = expenseDesc;
+		this.paidBy = paidBy;
+		this.amount = amount;
+		this.event = event;
+	}
+
 	/**
 	 * @return the expenseId
 	 */
-	public long getExpenseId() {
+	public String getExpenseId() {
 		return expenseId;
 	}
 	/**
 	 * @param expenseId the expenseId to set
 	 */
-	public void setExpenseId(long expenseId) {
+	public void setExpenseId(String expenseId) {
 		this.expenseId = expenseId;
 	}
 	/**
 	 * @return the expenseName
 	 */
-	public String getExpenseName() {
-		return expenseName;
+	public String getExpenseTitle() {
+		return expenseTitle;
 	}
 	/**
-	 * @param expenseName the expenseName to set
+	 * @param expenseTitle the expenseName to set
 	 */
-	public void setExpenseName(String expenseName) {
-		this.expenseName = expenseName;
+	public void setExpenseTitle(String expenseTitle) {
+		this.expenseTitle = expenseTitle;
 	}
 	/**
 	 * @return the expenseDesc
@@ -83,5 +125,11 @@ public class Expense {
 	 */
 	public void setEvent(Event event) {
 		this.event = event;
+	}
+
+	@Override
+	public String toString() {
+		return "Expense [expenseId=" + expenseId + ", expenseTitle=" + expenseTitle + ", expenseDesc=" + expenseDesc
+				+ ", paidBy=" + paidBy + ", amount=" + amount + ", event=" + event + "]";
 	}
 }

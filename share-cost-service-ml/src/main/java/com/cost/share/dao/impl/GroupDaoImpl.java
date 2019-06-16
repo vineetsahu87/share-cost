@@ -12,6 +12,7 @@ import org.bson.types.ObjectId;
 import com.cost.share.dao.GroupDao;
 import com.cost.share.model.Group;
 import com.cost.share.model.User;
+import com.cost.share.util.DBConnection;
 import com.mongodb.BasicDBObject;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;

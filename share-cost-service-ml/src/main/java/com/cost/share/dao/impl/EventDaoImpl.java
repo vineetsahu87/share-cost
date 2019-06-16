@@ -13,6 +13,8 @@ import com.cost.share.dao.GroupDao;
 import com.cost.share.model.Event;
 import com.cost.share.model.Group;
 import com.cost.share.model.User;
+import com.cost.share.util.DBConnection;
+import com.cost.share.util.DocumentMapper;
 import com.mongodb.BasicDBObject;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
@@ -26,7 +28,7 @@ import com.mongodb.client.model.Filters;
  */
 public class EventDaoImpl extends DBConnection implements EventDao {
 
-	final static Logger LOGGER = Logger.getLogger(GroupDaoImpl.class.getName());
+	final static Logger LOGGER = Logger.getLogger(EventDaoImpl.class.getName());
 
 	@Override
 	public void addEvent(Event event) {
@@ -73,7 +75,7 @@ public class EventDaoImpl extends DBConnection implements EventDao {
 
 			Document document = collection.find(Filters.eq("_id", new ObjectId(eventId))).first();
 			if (document != null) {
-				event = mapDocumentToEvent(document);
+				event = DocumentMapper.mapDocumentToEvent(document);
 			}
 		} catch (IllegalArgumentException iae) {
 			LOGGER.log(Level.SEVERE, iae.getMessage());
@@ -92,7 +94,7 @@ public class EventDaoImpl extends DBConnection implements EventDao {
 			FindIterable<Document> documents = collection.find(Filters.eq("groups.users.userId", userId));
 
 			for (Document document : documents) {
-				Event event = mapDocumentToEvent(document);
+				Event event = DocumentMapper.mapDocumentToEvent(document);
 				eventsList.add(event);
 			}
 		} catch (IllegalArgumentException iae) {
@@ -103,57 +105,5 @@ public class EventDaoImpl extends DBConnection implements EventDao {
 		return eventsList;
 	}
 
-	/**
-	 * @param document
-	 * @return
-	 */
-	private Event mapDocumentToEvent(Document document) {
-		String id = document.getObjectId("_id").toString();
-		String eventName = document.getString("eventName");
-		String eventDesc = document.getString("eventDesc");
-
-		Document groupDoc = (Document) document.get("groups");
-		Group group = mapDocumentToGroup(groupDoc);
-
-		Event event = new Event(id, eventName, eventDesc, group);
-
-		return event;
-	}
-
-	/**
-	 * Maps the document object to Group Object.
-	 * 
-	 * @param document
-	 * @return
-	 */
-	private Group mapDocumentToGroup(Document document) {
-
-		String groupId = document.getString("groupId");
-		String groupName = document.getString("groupName");
-		@SuppressWarnings("unchecked")
-		List<Document> userDocs = (List<Document>) document.get("users");
-		List<User> userList = mapDocumentToUser(userDocs);
-		Group group = new Group(groupId, groupName, userList);
-		return group;
-	}
-
-	/**
-	 * Maps the document object to the User Object.
-	 * 
-	 * @param userDocs
-	 * @return
-	 */
-	private List<User> mapDocumentToUser(List<Document> userDocs) {
-		List<User> userList = new ArrayList<User>();
-		for (Document userDoc : userDocs) {
-			String userId = userDoc.getString("userId");
-			String firstName = userDoc.getString("firstName");
-			String lastName = userDoc.getString("lastName");
-			String emailAddress = userDoc.getString("emailAddress");
-			User user = new User(userId, firstName, lastName, emailAddress);
-			userList.add(user);
-		}
-		return userList;
-	}
 
 }

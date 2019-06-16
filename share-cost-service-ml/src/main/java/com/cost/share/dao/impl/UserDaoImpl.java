@@ -4,9 +4,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.bson.Document;
+import org.bson.types.ObjectId;
 
 import com.cost.share.dao.UserDao;
 import com.cost.share.model.User;
+import com.cost.share.util.DBConnection;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
@@ -48,6 +50,26 @@ public class UserDaoImpl extends DBConnection implements UserDao {
 			FindIterable<Document> documents = collection.find(Filters.text(emailAddress));
 
 			Document document = documents.first();
+			if (document != null) {
+				user = new User(document.getObjectId("_id").toString(), document.getString("firstname"),
+						document.getString("lastname"), document.getString("emailAddress"));
+			}
+		} catch (IllegalArgumentException iae) {
+			LOGGER.log(Level.SEVERE, iae.getMessage());
+		} finally {
+			closeConnection();
+		}
+		return user;
+	}
+	
+	@Override
+	public User getUserById(String userId) {
+		User user = null;
+		try {
+			MongoCollection<Document> collection = getCollection("sharecost", "user");
+			collection.createIndex(Indexes.text("emailAddress"));
+
+			Document document = collection.find(Filters.eq("_id", new ObjectId(userId))).first();
 			if (document != null) {
 				user = new User(document.getObjectId("_id").toString(), document.getString("firstname"),
 						document.getString("lastname"), document.getString("emailAddress"));

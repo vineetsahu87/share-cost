@@ -1,4 +1,4 @@
-package com.cost.share.dao.impl;
+package com.cost.share.util;
 
 import org.bson.Document;
 

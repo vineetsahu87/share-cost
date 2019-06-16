@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
@@ -12,6 +13,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import com.cost.share.model.Event;
+import com.cost.share.model.Expense;
 import com.cost.share.service.EventLedgerService;
 
 /**
@@ -63,5 +65,37 @@ public class EventService {
 		EventLedgerService service = EventLedgerFactory.getEventLedgerImpl();
 		List<Event> events = service.getEvents(userId);
 		return Response.status(Status.OK).entity(events).build();
+	}
+
+	/**
+	 * Method handling HTTP GET requests to retrieve the list of expenses for an
+	 * event. The returned object will be sent to the client as "application/json"
+	 * media type.
+	 *
+	 * @return String that will be returned as a text/plain response.
+	 */
+	@GET
+	@Path("/{eventId}/expense")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getEventExpense(@PathParam(value = "eventId") String eventId) {
+		EventLedgerService service = EventLedgerFactory.getEventLedgerImpl();
+		List<Expense> expenses = service.getEventExpense(eventId);
+		return Response.status(Status.OK).entity(expenses).build();
+	}
+	
+	/**
+	 * Method handling HTTP GET requests to retrieve the list of expenses for an
+	 * event. The returned object will be sent to the client as "application/json"
+	 * media type.
+	 *
+	 * @return String that will be returned as a text/plain response.
+	 */
+	@GET
+	@Path("/{eventId}/expense/user/{userId}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getEventExpense(@PathParam(value = "eventId") String eventId, @PathParam(value = "userId") String userId) {
+		EventLedgerService service = EventLedgerFactory.getEventLedgerImpl();
+		List<Expense> expenses = service.getEventExpenseForUser(eventId, userId);
+		return Response.status(Status.OK).entity(expenses).build();
 	}
 }
