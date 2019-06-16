@@ -28,7 +28,6 @@ public class GroupDaoImpl extends DBConnection implements GroupDao {
 
 	final static Logger LOGGER = Logger.getLogger(GroupDaoImpl.class.getName());
 
-
 	@Override
 	public void addGroup(Group group) {
 		try {

@@ -8,20 +8,55 @@ package com.cost.share.model;
  */
 public class Event {
 
-	private long eventId;
+	private String eventId;
 	private String eventName;
 	private String eventDesc;
 	private Group group;
+		
+	/**
+	 * Default Constructor
+	 */
+	public Event() {
+		super();
+	}
+
+	/**
+	 * @param eventId
+	 * @param eventName
+	 * @param eventDesc
+	 * @param group
+	 */
+	public Event(String eventName, String eventDesc, Group group) {
+		super();
+		this.eventName = eventName;
+		this.eventDesc = eventDesc;
+		this.group = group;
+	}
+	
+	/**
+	 * @param eventId
+	 * @param eventName
+	 * @param eventDesc
+	 * @param group
+	 */
+	public Event(String eventId, String eventName, String eventDesc, Group group) {
+		super();
+		this.eventId = eventId;
+		this.eventName = eventName;
+		this.eventDesc = eventDesc;
+		this.group = group;
+	}
+
 	/**
 	 * @return the eventId
 	 */
-	public long getEventId() {
+	public String getEventId() {
 		return eventId;
 	}
 	/**
 	 * @param eventId the eventId to set
 	 */
-	public void setEventId(long eventId) {
+	public void setEventId(String eventId) {
 		this.eventId = eventId;
 	}
 	/**
@@ -59,5 +94,11 @@ public class Event {
 	 */
 	public void setGroup(Group group) {
 		this.group = group;
+	}
+
+	@Override
+	public String toString() {
+		return "Event [eventId=" + eventId + ", eventName=" + eventName + ", eventDesc=" + eventDesc + ", group="
+				+ group + "]";
 	}
 }
