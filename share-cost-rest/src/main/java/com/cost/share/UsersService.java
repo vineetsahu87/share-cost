@@ -14,12 +14,21 @@ import com.cost.share.model.User;
 import com.cost.share.service.UserGroupService;
 
 /**
- * @author Vineet
+ * Services for maintaining user data.
+ * @author Vineet Sahu
  *
  */
 @Path("/users")
-public class Users {
+public class UsersService {
 
+	/**
+	 * Adds a new User to the system.
+	 * 
+	 * @param firstName
+	 * @param lastName
+	 * @param emailAddress
+	 * @return
+	 */
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response addUser(@FormParam("firstName") String firstName, @FormParam("lastName") String lastName,
@@ -30,6 +39,11 @@ public class Users {
 		return Response.status(Status.OK).build();
 	}
 
+	/**
+	 * Gets the users if it exists based on the emailAddress.
+	 * @param emailAddress
+	 * @return
+	 */
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getUser(@QueryParam("emailAddress") String emailAddress) {
@@ -37,6 +51,4 @@ public class Users {
 		User user = service.getUser(emailAddress);
 		return Response.status(Status.OK).entity(user).type(MediaType.APPLICATION_JSON).build();
 	}
-	
-
 }

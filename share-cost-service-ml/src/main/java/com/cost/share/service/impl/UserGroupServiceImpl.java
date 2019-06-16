@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.cost.share.service.impl;
 
 import java.util.List;
@@ -14,6 +11,7 @@ import com.cost.share.model.User;
 import com.cost.share.service.UserGroupService;
 
 /**
+ * Service Implementation for User and Group related requests.
  * @author Vineet Sahu
  *
  */
@@ -39,8 +37,8 @@ public class UserGroupServiceImpl implements UserGroupService {
 
 	@Override
 	public void addUserToGroup(String groupId, List<User> users) {
-		// TODO Auto-generated method stub
-
+		GroupDao dao = new GroupDaoImpl();
+		dao.addUserToGroup(groupId, users);
 	}
 
 	@Override
@@ -51,8 +49,8 @@ public class UserGroupServiceImpl implements UserGroupService {
 
 	@Override
 	public List<Group> getUserGroups(String userId) {
-		// TODO Auto-generated method stub
-		return null;
+		GroupDao dao = new GroupDaoImpl();
+		return dao.getUserGroups(userId);
 	}
 
 }

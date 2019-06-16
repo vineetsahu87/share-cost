@@ -15,6 +15,13 @@ public class Group {
 	private List<User> users;
 	
 	/**
+	 * Default constructor for Json to object conversion.
+	 */
+	public Group() {
+		super();
+	}
+	
+	/**
 	 * @param groupName
 	 * @param users
 	 */
@@ -70,4 +77,10 @@ public class Group {
 	public void setUsers(List<User> users) {
 		this.users = users;
 	}
+
+	@Override
+	public String toString() {
+		return "Group [groupId=" + groupId + ", groupName=" + groupName + ", users=" + users + "]";
+	}
+	
 }

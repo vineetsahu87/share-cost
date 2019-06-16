@@ -13,6 +13,13 @@ public class User
     private String emailAddress;
     
 	/**
+	 * Default constructor for Json to object conversion.
+	 */
+    public User() {
+    	super();
+    }
+    
+	/**
 	 * @param firstName
 	 * @param lastName
 	 * @param emailAddress
@@ -23,7 +30,6 @@ public class User
 		this.lastName = lastName;
 		this.emailAddress = emailAddress;
 	}
-	
 	
 	/**
 	 * @param firstName
