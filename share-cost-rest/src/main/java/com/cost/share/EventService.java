@@ -156,9 +156,9 @@ public class EventService {
 	 * @return String that will be returned as a application/json response.
 	 */
 	@GET
-	@Path("{eventId}/user/{userId}/cost")
+	@Path("/{eventId}/user/{userId}/cost")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response getEventCos(@PathParam(value = "eventId") String eventId,
+	public Response getEventCostForUser(@PathParam(value = "eventId") String eventId,
 			@PathParam(value = "userId") String userId) {
 		EventLedgerService service = EventLedgerFactory.getEventLedgerImpl();
 		double cost = service.getEventCostForUser(eventId, userId);
