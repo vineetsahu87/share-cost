@@ -25,12 +25,16 @@ The project is a maven multi-module project which contains 4 modules
 - **share-cost-service-ml** - The projects contains the implementation for the service. The project is responsible for opening the connection with the DB, Doing CRUD operation on the DB, Closing the DB Connections.
 
 ## Architecture of the software
+Following are some of the Key decisions taken while designing the software
+- **Restful Web Service** - The project use Restful Web Services to expose API for cost sharing. Since Restful web services use HTTP protocol to communicate it can be used with any device.
+- **Apache Tomcat** - Apache tomcat was used locally to host the web application. Any other server can be used to host the Application as well.
+- **Mongo DB** - There were multiple reasons for selecting MongoDB. Since MongoDB is a NoSQL document database it is faster compared to SQL. It would help us scale the application once the number of users increase. The number of reads and writes to the application would be more that the updates. The reads and writes are very fast in MongoDB.
 
 ## Installation
   Following are the minimum things required for installation of the project
   - Java 1.8
   - [Maven 3.6.1](https://maven.apache.org/download.cgi?Preferred=ftp://mirror.reverse.net/pub/apache/)
-  - [Tomcat 9](https://tomcat.apache.org/download-90.cgi)
+  - [Apache Tomcat 9](https://tomcat.apache.org/download-90.cgi)
   - [MongoDB](https://www.mongodb.com/download-center/community)
   
   #### DB Configuration
@@ -49,6 +53,8 @@ The project is a maven multi-module project which contains 4 modules
   to deploy the war or the Eclipse servers plugin can help manage the deployment of war to the tomcat server (which I used during  development).
   
 ## APIs Exposed
+
+|| API | Description|
 
 ## ToDo List
 - Unit Test - Could not complete unti tests due vastness of the problem and time crunch.The maven plugin to show the test reports has been
