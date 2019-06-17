@@ -65,7 +65,12 @@ Following are some of the Key decisions taken while designing the software
 | **Group** | POST | /group |  | Creates a new group.|
 | **Group** | GET | /group/{groupId} | | Gets the group given the groupId.|
 | **Group** | POST | /group/{groupId}/user | | Adds a new user to the Group.|
-| **Group** | GET | /group/user/{userId} | | Gets the groups that the person is associated to.|
+| **Group** | GET | /group/user/{userId} | | Gets the groups that the person is associated with.|
+| **Event** | POST | /event | | Creates a new event.|
+| **Event** | GET | /event/{eventId} | | Gets the event given the eventId.|
+| **Event** | GET | /event/user/{userId} | | Gets the events the user is part of.|
+| **Expense** | GET | /event/{eventId}/expense | | Gets all the expenses for an event.|
+
 ## ToDo List
 - Unit Test - Could not complete unti tests due vastness of the problem and time crunch.The maven plugin to show the test reports has been
 incorporated.
