@@ -64,12 +64,17 @@ Following are some of the Key decisions taken while designing the software
 | **User** | GET | /users | *QueryParam* - emailAddress | Gets the users deatils based on the emailAddress provided in the query param|
 | **Group** | POST | /group |  | Creates a new group.|
 | **Group** | GET | /group/{groupId} | | Gets the group given the groupId.|
-| **Group** | POST | /group/{groupId}/user | | Adds a new user to the Group.|
+| **Group** | PUT | /group/{groupId}/user | | Adds a new user to the Group.|
 | **Group** | GET | /group/user/{userId} | | Gets the groups that the person is associated with.|
 | **Event** | POST | /event | | Creates a new event.|
 | **Event** | GET | /event/{eventId} | | Gets the event given the eventId.|
 | **Event** | GET | /event/user/{userId} | | Gets the events the user is part of.|
-| **Expense** | GET | /event/{eventId}/expense | | Gets all the expenses for an event.|
+| **Event** | POST | /event/{eventId}/expense | | Posts an expense for an event.|
+| **Event** | GET | /event/{eventId}/expense | | Gets all the expenses for an event.|
+| **Event** | GET | /event/{eventId}/expense/user/{userId} | | Gets all the expenses for an event done by an User.|
+| **Event** | POST | /event/{eventId}/expense/{expenseId}/ledger | | Adds a ledger for the event expense.|
+| **Event** | GET | /event/{eventId}/user/{userId}/cost | | Gets total cost of the event for the user.|
+| **Event** | GET | /event/ | *QueryParam* - userA *QueryParam* - userB| Gets amounted owed by user B to userA.|
 
 ## ToDo List
 - Unit Test - Could not complete unti tests due vastness of the problem and time crunch.The maven plugin to show the test reports has been
