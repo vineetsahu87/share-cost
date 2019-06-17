@@ -6,8 +6,8 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
@@ -36,15 +36,16 @@ public class GroupsService {
 	}
 
 	@GET
+	@Path("/{groupId}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response getGroup(@QueryParam(value = "groupId") String groupId) {
+	public Response getGroup(@PathParam(value = "groupId") String groupId) {
 		UserGroupService service = UserGroupFactory.getUserGroupImpl();
 		Group group = service.getGroup(groupId);
 		return Response.status(Status.OK).entity(group).build();
 	}
 	
 	@POST
-	@Path("/user")
+	@Path("/{groupId}/user")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response addUserToGroup(Group group) {
@@ -54,9 +55,9 @@ public class GroupsService {
 	}
 	
 	@GET
-	@Path("/user")
+	@Path("/user/{userId}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response getUserGroups(@QueryParam(value = "userId") String userId) {
+	public Response getUserGroups(@PathParam(value = "userId") String userId) {
 		UserGroupService service = UserGroupFactory.getUserGroupImpl();
 		List<Group> groups = service.getUserGroups(userId);
 		return Response.status(Status.OK).entity(groups).build();

@@ -61,9 +61,9 @@ public class EventService {
 	 * @return String that will be returned as a application/json response.
 	 */
 	@GET
-	@Path("/user")
+	@Path("/user/{userId}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response getEvents(@QueryParam(value = "userId") String userId) {
+	public Response getEventsForUser(@PathParam(value = "userId") String userId) {
 		EventLedgerService service = EventLedgerFactory.getEventLedgerImpl();
 		List<Event> events = service.getEvents(userId);
 		return Response.status(Status.OK).entity(events).build();
@@ -94,7 +94,7 @@ public class EventService {
 	@GET
 	@Path("/{eventId}/expense")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response getEventExpense(@PathParam(value = "eventId") String eventId) {
+	public Response getEventTotalExpense(@PathParam(value = "eventId") String eventId) {
 		EventLedgerService service = EventLedgerFactory.getEventLedgerImpl();
 		List<Expense> expenses = service.getEventExpense(eventId);
 		return Response.status(Status.OK).entity(expenses).build();
