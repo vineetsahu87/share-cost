@@ -15,19 +15,21 @@ import com.cost.share.service.UserGroupService;
 
 /**
  * Services for maintaining user data.
- * @author Vineet Sahu
+ * 
+ * @author Vineet Sahu (vineetsahu87@gmail.com)
  *
  */
 @Path("/users")
 public class UsersService {
 
 	/**
-	 * Adds a new User to the system.
+	 * Adds a new User to Share Cost.Method handling HTTP POST requests. The
+	 * returned object will be sent to the client as "application/json" media type.
 	 * 
-	 * @param firstName
-	 * @param lastName
-	 * @param emailAddress
-	 * @return
+	 * @param firstName - firstname for the user.
+	 * @param lastName - lastname for the user.
+	 * @param emailAddress - emailAddress for the user.
+	 * @return String that will be returned as a application/json response.
 	 */
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
@@ -40,9 +42,12 @@ public class UsersService {
 	}
 
 	/**
-	 * Gets the users if it exists based on the emailAddress.
-	 * @param emailAddress
-	 * @return
+	 * Gets the users if it exists based on the emailAddress. Method handling HTTP GET requests. The
+	 * returned object will be sent to the client as "application/json" media type.
+	 * 
+	 * @param emailAddress - emailAddress for the user.
+	 * 
+	 * @return String that will be returned as a application/json response.
 	 */
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)

@@ -18,15 +18,19 @@ import com.cost.share.model.Ledger;
 import com.cost.share.service.EventLedgerService;
 
 /**
- * @author Vineet Sahu
+ * The Service handles the Event and Ledger services.
+ * 
+ * @author Vineet Sahu (vineetsahu87@gmail.com)
  */
 @Path("/event")
 public class EventService {
 
 	/**
-	 * Method handling HTTP GET requests. The returned object will be sent to the
-	 * client as "text/plain" media type.
+	 * Adds a new event. Method handling HTTP POST requests. The returned object
+	 * will be sent to the client as "application/json" media type.
 	 *
+	 * @param event - Event to be added.
+	 * 
 	 * @return String that will be returned as a application/json response.
 	 */
 	@POST
@@ -42,6 +46,8 @@ public class EventService {
 	 * The returned object will be sent to the client as "application/json" media
 	 * type.
 	 *
+	 * @param eventId - event Id for which the event needs to be retrieved.
+	 * 
 	 * @return String that will be returned as a application/json response.
 	 */
 	@GET
@@ -58,6 +64,8 @@ public class EventService {
 	 * of. The returned object will be sent to the client as "application/json"
 	 * media type.
 	 *
+	 * @param userId - userID for which the events needs to be retrieved.
+	 * 
 	 * @return String that will be returned as a application/json response.
 	 */
 	@GET
@@ -70,9 +78,12 @@ public class EventService {
 	}
 
 	/**
-	 * Method handling HTTP POST requests to add expense for and event. The returned
-	 * object will be sent to the client as "application/json" media type.
+	 * Adds the expense for the event. Method handling HTTP POST requests. The
+	 * returned object will be sent to the client as "application/json" media type.
 	 *
+	 * @param eventId - event Id for which the expense needs to be added
+	 * @param expense - expense to be added for the event.
+	 * 
 	 * @return String that will be returned as a application/json response.
 	 */
 	@POST
@@ -89,6 +100,8 @@ public class EventService {
 	 * event. The returned object will be sent to the client as "application/json"
 	 * media type.
 	 *
+	 * @param eventId - event Id for which the expenses needs to be retrieved.
+	 * 
 	 * @return String that will be returned as a application/json response.
 	 */
 	@GET
@@ -101,10 +114,13 @@ public class EventService {
 	}
 
 	/**
-	 * Method handling HTTP GET requests to retrieve the list of expenses for an
-	 * event. The returned object will be sent to the client as "application/json"
-	 * media type.
+	 * Retrieves the list of expenses for an event done by a user.Method handling
+	 * HTTP GET requests. The returned object will be sent to the client as
+	 * "application/json" media type.
 	 *
+	 * @param eventId - event ID for which the expenses needs to be retrieved.
+	 * @param userId - user Id who has done the expense for the event.
+	 * 
 	 * @return String that will be returned as a application/json response.
 	 */
 	@GET
@@ -118,9 +134,12 @@ public class EventService {
 	}
 
 	/**
-	 * Method handling HTTP POST requests to add expense for and event. The returned
-	 * object will be sent to the client as "application/json" media type.
+	 * Adds a ledger for an expense. Method handling HTTP POST requests. The
+	 * returned object will be sent to the client as "application/json" media type.
 	 *
+	 * @param expenseId - expense Id for which the ledger needs to be added.
+	 * @param ledger - Ledger entry to be added for the expense.
+	 * 
 	 * @return String that will be returned as a application/json response.
 	 */
 	@POST
@@ -133,10 +152,13 @@ public class EventService {
 	}
 
 	/**
-	 * Method handling HTTP GET requests. The returned object will be sent to the
-	 * client as "application/json" media type. The method returns the amount owed
-	 * by userB to userA
+	 * The method returns the amount owed by userB to userA. Method handling HTTP
+	 * GET requests. The returned object will be sent to the client as
+	 * "application/json" media type.
 	 *
+	 * @param userA - userId for the user who has lend money to userB.
+	 * @param userB - userId for the user who owes money to userA.
+	 * 
 	 * @return String that will be returned as a application/json response.
 	 */
 	@GET
@@ -149,10 +171,14 @@ public class EventService {
 	}
 
 	/**
-	 * Method handling HTTP GET requests to retrieve cost for the event for the
-	 * user. The returned object will be sent to the client as "application/json"
-	 * media type.
+	 * Retrieve cost of the event for the user. Method handling HTTP GET requests.
+	 * The returned object will be sent to the client as "application/json" media
+	 * type.
 	 *
+	 * @param - eventId - event Id for which the cost needs to be retrieved.
+	 * @param - userId - user Id for which the cost needs to be retrieved for the
+	 *          event.
+	 * 
 	 * @return String that will be returned as a application/json response.
 	 */
 	@GET

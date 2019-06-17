@@ -17,16 +17,20 @@ import com.cost.share.model.Group;
 import com.cost.share.service.UserGroupService;
 
 /**
- * @author Vineet Sahu
+ * Services to maintain the Group information for the share cost app.
+ * 
+ * @author Vineet Sahu (vineetsahu87@gmail.com)
  *
  */
 @Path("/group")
 public class GroupsService {
 
 	/**
-	 * Adds a new Group containing users.
-	 * @param group
-	 * @return
+	 * Adds a new Group containing users.Method handling HTTP POST requests. The
+	 * returned object will be sent to the client as "application/json" media type.
+	 * 
+	 * @param group - Group object to be added.
+	 * @return String that will be returned as a application/json response.
 	 */
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
@@ -36,6 +40,13 @@ public class GroupsService {
 		return Response.status(Status.OK).build();
 	}
 
+	/**
+	 * Gets the group given the group Id. Method handling HTTP GET requests. The
+	 * returned object will be sent to the client as "application/json" media type.
+	 *
+	 * @param groupId - groupId for the group to be retrieved.
+	 * @return String that will be returned as a application/json response.
+	 */
 	@GET
 	@Path("/{groupId}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -44,7 +55,14 @@ public class GroupsService {
 		Group group = service.getGroup(groupId);
 		return Response.status(Status.OK).entity(group).build();
 	}
-	
+
+	/**
+	 * Adds the user to the existing group. Method handling HTTP PUT requests. The
+	 * returned object will be sent to the client as "application/json" media type.
+	 *
+	 * @param group - The group object to be updated.
+	 * @return String that will be returned as a application/json response.
+	 */
 	@PUT
 	@Path("/{groupId}/user")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -54,7 +72,15 @@ public class GroupsService {
 		service.addUserToGroup(group.getGroupId(), group.getUsers());
 		return Response.status(Status.OK).build();
 	}
-	
+
+	/**
+	 * Retrieves the User Groups given the userId. Method handling HTTP GET
+	 * requests. The returned object will be sent to the client as
+	 * "application/json" media type.
+	 *
+	 * @param userId - the userId for which the groups needs to be retrieved.
+	 * @return String that will be returned as a application/json response.
+	 */
 	@GET
 	@Path("/user/{userId}")
 	@Produces(MediaType.APPLICATION_JSON)
