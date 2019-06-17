@@ -50,12 +50,22 @@ Following are some of the Key decisions taken while designing the software
   
   #### Deploying the WAR to Tomcat
   From `\share-cost\share-cost-rest\target` get the war file to be deployed in the Tomcat server. The tomcat server console can be used 
-  to deploy the war or the Eclipse servers plugin can help manage the deployment of war to the tomcat server (which I used during  development).
+  to deploy the war or the Eclipse servers plugin can help manage the deployment of war to the tomcat server (which I used during  development). By default the services uri would be 
+  ```
+  http://localhost:8080/share-cost-rest/webapi/
+  ```
+  The user would require to append the below URI Path.
   
 ## APIs Exposed
 
-|| API | Description|
-
+| Context | Operation| URI Path | Parameters |Description|
+| ------ | ------ | ------ | ------ | ------ |
+| **User** | POST | /users | | Creates a new user.| 
+| **User** | GET | /users | *QueryParam* - emailAddress | Gets the users deatils based on the emailAddress provided in the query param|
+| **Group** | POST | /group |  | Creates a new group.|
+| **Group** | GET | /group/{groupId} | | Gets the group given the groupId.|
+| **Group** | POST | /group/{groupId}/user | | Adds a new user to the Group.|
+| **Group** | GET | /group/user/{userId} | | Gets the groups that the person is associated to.|
 ## ToDo List
 - Unit Test - Could not complete unti tests due vastness of the problem and time crunch.The maven plugin to show the test reports has been
 incorporated.
